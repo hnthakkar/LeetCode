@@ -1,41 +1,34 @@
-package pascal;
+package pascal2;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class Pascal {
-
-    public List<List<Integer>> generate(int numRows) {
-        if (numRows <= 0) {
-            return Collections.emptyList();
-        }
-
-        List<List<Integer>> ret = new ArrayList<>();
+public class Pascal2 {
+    public List<Integer> getRow(int rowIndex) {
 
         List<Integer> firstRow = new ArrayList<>();
         firstRow.add(1);
-        ret.add(firstRow);
 
-        if (numRows == 1) {
-            return ret;
+        if (rowIndex == 0) {
+            return firstRow;
         }
 
         List<Integer> secondRow = new ArrayList<>();
         secondRow.add(1);
         secondRow.add(1);
-        ret.add(secondRow);
 
-
-        if (numRows == 2) {
-            return ret;
+        if (rowIndex == 1) {
+            return secondRow;
         }
 
-        for (int i = 3; i <= numRows; i++) {
-            ret.add(getNextRow(ret.get(i-2), i));
+        List<Integer> previousRow = secondRow;
+        List currentRow;
+        for (int i = 3; i <= rowIndex + 1; i++) {
+            currentRow = getNextRow(previousRow, i);
+            previousRow = currentRow;
         }
 
-        return ret;
+        return previousRow;
     }
 
     private List<Integer> getNextRow(List<Integer> previousRow, int currentRow) {
