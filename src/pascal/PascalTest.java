@@ -8,6 +8,5 @@ public class PascalTest {
     public void testPascal() {
         Pascal pascalTest = new Pascal();
         pascalTest.generate(5);
-        System.out.println("test");
     }
 }
