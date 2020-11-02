@@ -21,7 +21,6 @@ public class LargeGroup {
                     indexes.add(newGroupStartIndex);
                     indexes.add(currentIndex - 1);
                     ret.add(indexes);
-                    groupLen = 0;
                 }
                 newGroupStartIndex = currentIndex;
                 previousChar = charArray[currentIndex];
