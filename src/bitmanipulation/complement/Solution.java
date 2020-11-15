@@ -3,7 +3,21 @@ package bitmanipulation.complement;
 public class Solution {
 
     public static void main(String[] args) {
-        findComplement(5);
+        findComplement2(5);
+    }
+
+    public static int findComplement2(int num)
+    {
+        int i = 0;
+        int j = 0;
+
+        while (i < num)
+        {
+            i += Math.pow(2, j);
+            j++;
+        }
+
+        return i - num;
     }
 
     public static int findComplement(int num) {
