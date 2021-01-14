@@ -16,6 +16,40 @@ public class Solution {
     }
 
     private int findPeakElement(int[] nums, int startIndex, int endIndex) {
+        if (startIndex > endIndex) {
+            return -1;
+        }
+
+        if ((startIndex + 1) <= endIndex && nums[startIndex] > nums[startIndex + 1]) {
+            return startIndex;
+        }
+
+        if ((endIndex - 1) >= startIndex && nums[endIndex] > nums[endIndex - 1]) {
+            return endIndex;
+        }
+
+        int mid = startIndex + (endIndex - startIndex)/2;
+
+        if ((mid - 1) >= startIndex && nums[mid - 1] < nums[mid]
+                && (mid + 1) <= endIndex && nums[mid + 1] < nums[mid]) {
+            return mid;
+        } else if ((mid - 1) >= startIndex && nums[mid - 1] > nums[mid]) {
+            return findPeakElement(nums, startIndex, mid -1);
+        } else {
+            return findPeakElement(nums, mid + 1, endIndex);
+        }
+    }
+
+    /*
+    public int findPeakElement(int[] nums) {
+        if (nums.length == 1) {
+            return 0;
+        }
+
+        return findPeakElement(nums, 0, nums.length - 1);
+    }
+
+    private int findPeakElement(int[] nums, int startIndex, int endIndex) {
         if (startIndex < endIndex && nums[startIndex] > nums[startIndex + 1]) {
             return startIndex;
         }
@@ -34,6 +68,6 @@ public class Solution {
         } else {
             return findPeakElement(nums, mid, endIndex);
         }
-    }
+    } */
 
 }
