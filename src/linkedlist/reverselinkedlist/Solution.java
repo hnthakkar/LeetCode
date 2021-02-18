@@ -1,9 +1,11 @@
 package linkedlist.reverselinkedlist;
 
+import educative.linkedlist.reverse.SinglyLinkedList;
+
 public class Solution {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1, new ListNode(2, new ListNode(6, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6)))))));
+        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6, new ListNode(7)))))));
         Solution sol = new Solution();
         sol.printList(head);
         ListNode rev = sol.reverseList(head);
@@ -11,6 +13,7 @@ public class Solution {
     }
 
     private void printList(ListNode head) {
+        System.out.println();
         while (head != null) {
             System.out.print("\t" + head.val);
             head = head.next;
@@ -27,6 +30,17 @@ public class Solution {
         head.next.next = head;
         head.next = null;
 
+        return tmp;
+    }
+
+    public static SinglyLinkedList.Node reverse(SinglyLinkedList.Node headNode) {
+        if (headNode.nextNode == null) {
+            return headNode;
+        }
+
+        SinglyLinkedList.Node tmp = reverse(headNode.nextNode);
+        tmp.nextNode = headNode;
+        headNode.nextNode = null;
         return tmp;
     }
 
