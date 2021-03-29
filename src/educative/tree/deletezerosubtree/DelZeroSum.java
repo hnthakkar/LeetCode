@@ -67,4 +67,14 @@ public class DelZeroSum {
 
         return tree.data + leftWeight + rightWeight;
     }
+
+    public static String convertListToString(List<BinaryTreeNode> nodes) {
+        StringBuilder sb = new StringBuilder();
+
+        for (BinaryTreeNode node: nodes) {
+            sb.add(node.data + " ");
+        }
+
+        return sb.toString();
+    }
 }
