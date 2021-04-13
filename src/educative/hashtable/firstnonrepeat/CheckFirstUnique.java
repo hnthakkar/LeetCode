@@ -9,7 +9,6 @@ public class CheckFirstUnique {
     {
         Set<Integer> unique = new HashSet<>();
 
-        Charater.
         int firstNonrepeating = arr[arr.length - 1];
         for (int i = arr.length - 1; i >= 0; i--) {
             if (unique.contains(arr[i])) {
