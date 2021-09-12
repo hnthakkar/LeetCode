@@ -1,10 +1,12 @@
 public class MergeSort {
 
     public static void main(String[] args) {
-        merge(new int[3], 0,new int[]{1,2,3}, 3);
+        // merge(new int[3], 0,new int[]{1,2,3}, 3);
     }
 
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+
+
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
         int indexToCopy = nums1.length - 1;
         int num1Index = m - 1;
         int num2Index = n - 1;

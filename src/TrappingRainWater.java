@@ -89,3 +89,119 @@ public class TrappingRainWater {
         return trapped;
     }
 }
+
+
+/*
+ // Better coding
+
+ import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+class Solution {
+
+    public static int trappingRainWater(int[] elevations) {
+
+        int n = elevations.length;
+        int[] leftWalls = new int[n];
+        int[] rightWalls = new int[n];
+
+        int maxLeftWall = 0;
+        for (int i = 0; i < n; i++) {
+            leftWalls[i] = maxLeftWall;
+            maxLeftWall = Math.max(elevations[i], maxLeftWall);
+        }
+
+        int maxRightWall = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            rightWalls[i] = maxRightWall;
+            maxRightWall = Math.max(elevations[i], maxRightWall);
+        }
+
+        int totalWater = 0;
+        for (int i = 0; i < n; i++) {
+            int elevation = elevations[i];
+            int lowestWall = Math.min(leftWalls[i], rightWalls[i]);
+            if (lowestWall > elevation) {
+                totalWater += lowestWall - elevation;
+            }
+        }
+
+        return totalWater;
+    }
+    //Driver code
+    public static void main(String[] arg){
+        String[] inputs = {"3 2 1 2 2 3 2","3 2 1 2 2 3"};
+        for(int i = 0; i < inputs.length; i++) {
+            int[] elevs = Arrays.stream(inputs[i].split(" ")).mapToInt(Integer::parseInt).toArray();
+            System.out.println("Trapping rain water : "+Solution.trappingRainWater(elevs));
+        }
+    }
+
+}
+
+
+ */
+
+/*
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+class Solution {
+
+    public static int trappingRainWater(int[] elevations) {
+        int len = elevations.length;
+        int[] boundary;
+        int startIndex = 0;
+        int volume = 0;
+        while (startIndex < (len - 1)) {
+            boundary = getNextBoundary(0, elevations, len);
+            volume += getTrappedWaterBetween(boundary[0], boundary[1], elevations);
+            startIndex = boundary[1] + 1;
+            if (startIndex + 2 > (len - 1)) {
+                break;
+            }
+        }
+
+
+        return volume;
+    }
+
+    private static int getTrappedWaterBetween(int startIndex, int endIndex, int[] elevations) {
+        int minHeight = elevations[startIndex] <= elevations[endIndex] ? elevations[startIndex] : elevations[endIndex];
+        int vol = 0;
+        for (int i = startIndex + 1; i < endIndex; i++) {
+            vol += minHeight - elevations[i];
+        }
+
+        return vol;
+    }
+
+    private static int[] getNextBoundary(int startIndex, int[] elevations, int len) {
+        int leftIndex = startIndex;
+        while (leftIndex < (len - 2) && elevations[leftIndex] < elevations[leftIndex + 1]) {
+            leftIndex++;
+        }
+
+
+        int rightIndex = leftIndex + 2 < len ? leftIndex + 2 : len - 1;;
+
+        int nextMaxIndex = rightIndex + 1;
+        while (rightIndex < (len - 1) && elevations[rightIndex] < elevations[leftIndex]) {
+            if (elevations[nextMaxIndex] < elevations[rightIndex]) {
+                nextMaxIndex = rightIndex;
+            }
+            rightIndex++;
+        }
+
+        return new int[]{leftIndex, rightIndex};
+    }
+
+}
+
+
+ */
