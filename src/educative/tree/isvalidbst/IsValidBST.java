@@ -1,7 +1,10 @@
 package educative.tree.isvalidbst;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class IsValidBST {
-    public static boolean isBst(BinaryTreeNode root) {
+    public static boolean isBst(TreeNode root) {
         List<Integer> nodes = new ArrayList<>();
         getInOrder(root, nodes);
 
@@ -27,12 +30,31 @@ public class IsValidBST {
         return true;
     }
 
-    private static void getInOrder(BinaryTreeNode root, List<Integer> nodes) {
+    private static void getInOrder(TreeNode root, List<Integer> nodes) {
         if (root == null) {
             return;
         }
         getInOrder(root.left, nodes);
-        nodes.add(root.data);
+        nodes.add(root.val);
         getInOrder(root.right, nodes);
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }
