@@ -5,17 +5,23 @@ public class IsValidBST {
         List<Integer> nodes = new ArrayList<>();
         getInOrder(root, nodes);
 
+        if (nodes.size() == 1) {
+            return true;
+        }
+
         return validateInOrderSorted(nodes);
     }
 
     private static boolean validateInOrderSorted(List<Integer> nodes) {
-        int prev = Integer.MIN_VALUE;
+        int len = nodes.size();
+        int prev = nodes.get(0);
 
-        for (int node: nodes) {
-            if (node < prev) {
+        for (int i = 1; i < len; i++) {
+            int cur = nodes.get(i);
+            if (cur <= prev) {
                 return false;
             }
-            prev = node;
+            prev = cur;
         }
 
         return true;
