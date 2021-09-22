@@ -1,5 +1,7 @@
 package educative.tree.deletezerosubtree;
 
+import java.util.List;
+
 public class DelZeroSum {
 
     public static void deleteZeroSumSubtree(BinaryTree tree) {
@@ -76,5 +78,24 @@ public class DelZeroSum {
         }
 
         return sb.toString();
+    }
+}
+
+class BinaryTreeNode {
+    int data;
+    BinaryTreeNode left;
+    BinaryTreeNode right;
+
+    BinaryTreeNode() {
+    }
+
+    BinaryTreeNode(int val) {
+        this.data = val;
+    }
+
+    BinaryTreeNode(int val, BinaryTreeNode left, BinaryTreeNode right) {
+        this.data = val;
+        this.left = left;
+        this.right = right;
     }
 }
