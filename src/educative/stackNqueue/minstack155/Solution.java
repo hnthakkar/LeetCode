@@ -45,9 +45,7 @@ public class Solution {
             tail = node;
         }
 
-        if (min == null) {
-            min = node;
-        } else if (min.val > node.val) {
+        if (min == null || min.val > node.val) {
             min = node;
         }
 
