@@ -47,9 +47,7 @@ public class Solution {
             head = head.next;
         }
 
-        if (min == null) {
-            min = newNode;
-        } else if (min.val > newNode.val) {
+        if (min == null || min.val > newNode.val) {
             min = newNode;
         }
     }
