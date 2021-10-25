@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class Solution3 {
 
+    /*
     public static void main(String[] args) {
         Solution3 sol = new Solution3();
 
@@ -117,8 +118,10 @@ public class Solution3 {
 
         return result;
     }
-}
 
+     */
+}
+/*
 class TreeNode {
     int val;
     TreeNode left;
@@ -131,3 +134,5 @@ class TreeNode {
         this.right = right;
     }
 }
+
+ */
