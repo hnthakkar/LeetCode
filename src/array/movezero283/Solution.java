@@ -7,6 +7,7 @@ public class Solution {
         sol.moveZeroes(new int[]{4,2,4,0,0,3,0,5,1,0});
     }
 
+    /*
     public void moveZeroes(int[] nums) {
         int len = nums.length;
 
@@ -23,6 +24,27 @@ public class Solution {
                     nums[i] = 0;
                 }
                 nonZeroNumberCount++;
+            }
+        }
+    }
+
+     */
+
+    public void moveZeroes(int[] nums) {
+        int len = nums.length;
+
+        int lastZeroIndex = 0;
+
+        for (int i = 1; i < len; i++) {
+            while (lastZeroIndex < i && nums[lastZeroIndex] != 0) {
+                lastZeroIndex++;
+            }
+
+            if (nums[lastZeroIndex] == 0) {
+                if (nums[i] != 0) {
+                    nums[lastZeroIndex] = nums[i];
+                    nums[i] = 0;
+                }
             }
         }
     }
