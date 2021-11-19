@@ -2,6 +2,7 @@ package bitmanipulation.hammingdistance461;
 
 public class Solution {
 
+    /*
     public int hammingDistance(int x, int y) {
         String number1AsString = String.format("%32s", Integer.toBinaryString(x)).replace(' ', '0');
 
@@ -36,4 +37,22 @@ public class Solution {
 
         return counter;
     }
+
+     */
+
+    public int hammingDistance(int x, int y) {
+        int counter = 0;
+
+        for (int i = 0; i < 32; i++) {
+            if (((x & 1) == 1 && (y & 1) == 0) || ((x & 1) == 0 && (y & 1) == 1)) {
+                counter++;
+            }
+
+            x >>= 1;
+            y >>= 1;
+        }
+
+        return counter;
+    }
+
 }

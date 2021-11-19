@@ -2,6 +2,46 @@ package string.reversewordsinstring;
 
 public class Solution {
 
+    public static void main(String[] str) {
+        Solution sol = new Solution();
+        sol.reverseWords("Let's take LeetCode contest");
+    }
+
+    public String reverseWords(String s) {
+        char[] sArray = s.toCharArray();
+        int sLen = sArray.length;
+
+        int leftIndex = 0;
+        int rightIndex = 0;
+
+        while (leftIndex < sLen) {
+            while (rightIndex < sLen && sArray[rightIndex] != ' ') {
+                rightIndex++;
+            }
+
+            rightIndex--;
+
+            reverse(sArray, leftIndex, rightIndex);
+
+            rightIndex += 2;
+            leftIndex = rightIndex;
+        }
+
+        return new String(sArray);
+    }
+
+    public void reverse(char[] s, int leftIndex, int rightIndex) {
+        char tmp;
+        while (leftIndex < rightIndex) {
+            tmp = s[rightIndex];
+            s[rightIndex] = s[leftIndex];
+            s[leftIndex] = tmp;
+            leftIndex++;
+            rightIndex--;
+        }
+    }
+
+    /*
     public String reverseWords(String s) {
         String[] sSplit = s.split(" ");
         int noOfWords = sSplit.length;
@@ -21,5 +61,7 @@ public class Solution {
 
         return sb.toString();
     }
+
+     */
 
 }

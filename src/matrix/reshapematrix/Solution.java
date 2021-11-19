@@ -2,6 +2,34 @@ package matrix.reshapematrix;
 
 public class Solution {
 
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        int rows = mat.length;
+        int cols = mat[0].length;
+
+        if ((rows * cols) != (r * c)) {
+            return mat;
+        }
+
+        int rIndex = 0;
+        int cIndex = 0;
+
+        int[][] result = new int[r][c];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[rIndex][cIndex++] = mat[i][j];
+
+                if (cIndex >= c) {
+                    rIndex++;
+                    cIndex = 0;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /*
     public static void main(String[] args) {
         Solution sol = new Solution();
         int[][] mat = new int[][] {{1,2}, {3,4}};
@@ -46,4 +74,6 @@ public class Solution {
 
         return newMat;
     }
+
+     */
 }
