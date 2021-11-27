@@ -5,6 +5,11 @@ import java.util.List;
 
 public class Solution {
 
+    public static void main(String[] str) {
+        Solution sol = new Solution();
+        sol.letterCasePermutation("a1b2");
+    }
+
     public List<String> letterCasePermutation(String s) {
         char[] sArray = s.toCharArray();
         int len = sArray.length;
