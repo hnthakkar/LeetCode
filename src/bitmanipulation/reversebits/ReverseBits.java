@@ -3,8 +3,21 @@ package bitmanipulation.reversebits;
 public class ReverseBits {
 
     public static void main(String[] args) {
-        reverseBits(0b11111111111111111111111111111101);
+        ReverseBits sol = new ReverseBits();
+        sol.reverseBits(0b11111111111111111111111111111101);
+        // reverseBits(0b11111111111111111111111111111101);
     }
+
+    public int reverseBits(int n) {
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            res = (res << 1) | (n & 1);
+            n = n >> 1;
+        }
+        return res;
+    }
+
+    /*
 
     public static int reverseBits(int n) {
         String numberAsString = String.format("%32s", Integer.toBinaryString(n)).replace(' ', '0');
@@ -41,4 +54,6 @@ public class ReverseBits {
         }
         return result;
     }
+
+     */
 }
