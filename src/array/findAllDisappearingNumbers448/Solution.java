@@ -6,7 +6,7 @@ import java.util.List;
 public class Solution {
 
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        int len = nums.length;
+        /*int len = nums.length;
 
         int[] freq = new int[len + 1];
 
@@ -22,7 +22,9 @@ public class Solution {
             }
         }
 
-        return result;
+        return result.si;*/
+
+        return null;
     }
 
 }
