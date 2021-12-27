@@ -1,12 +1,34 @@
 package heap.KClosestToOrigin;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class Solution {
 
     public static void main(String[] args) {
         Solution sol = new Solution();
-        sol.kClosest(new int[][] {{1,3},{-2,2}}, 1);
+        sol.kClosest(new int[][]{{1, 3}, {-2, 2}}, 1);
     }
 
+    public int[][] kClosest(int[][] points, int k) {
+        int noOfPoints = points.length;
+
+        PriorityQueue<Point> pq = new PriorityQueue<>(new PointComparator());
+        for (int i = 0; i < noOfPoints; i++) {
+            Point p = new Point(points[i][0], points[i][1]);
+            pq.add(p);
+        }
+
+        int[][] result = new int[k][2];
+
+        for (int i = 0; i < k; i++) {
+            Point p = pq.poll();
+            result[i] = new int[]{p.x, p.y};
+        }
+
+        return result;
+    }
+    /*
     public int[][] kClosest(int[][] points, int k) {
         int noOfPoints = points.length;
 
@@ -80,5 +102,33 @@ public class Solution {
                 break; // if heap property is satisfied
             }
         } //end of while
+    }
+
+     */
+}
+
+class PointComparator implements Comparator<Point> {
+
+    @Override
+    public int compare(Point o1, Point o2) {
+        if (o1.d > o2.d) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+}
+
+
+class Point {
+    int x;
+    int y;
+    double d;
+
+    public Point(int pX, int pY) {
+        x = pX;
+        y = pY;
+        d = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 }

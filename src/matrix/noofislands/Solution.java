@@ -34,6 +34,53 @@ public class Solution {
     }
 
     private void markAllElemsInIsland(char[][] grid, int x, int y, int rows, int cols) {
+        grid[x][y] = '0';
+
+        // top
+        if (x > 0 && grid[x - 1][y] == '1') {
+            grid[x - 1][y] = '0';
+            markAllElemsInIsland(grid, x-1, y, rows, cols);
+        }
+
+        // down
+        if (x + 1 < rows && grid[x + 1][y] == '1') {
+            grid[x + 1][y] = '0';
+            markAllElemsInIsland(grid, x+1, y, rows, cols);
+        }
+
+        // left
+        if (y > 0 && grid[x][y - 1] == '1') {
+            grid[x][y - 1] = '0';
+            markAllElemsInIsland(grid, x, y - 1, rows, cols);
+        }
+
+        // right
+        if (y + 1 < cols && grid[x][y + 1] == '1') {
+            grid[x][y + 1] = '0';
+            markAllElemsInIsland(grid, x, y + 1, rows, cols);
+        }
+    }
+
+    /*
+    public int numIslands(char[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        int noOfIslands = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (grid[i][j] == '1') {
+                    noOfIslands += 1;
+                    markAllElemsInIsland(grid, i, j, rows, cols);
+                }
+            }
+        }
+
+        return noOfIslands;
+    }
+
+    private void markAllElemsInIsland(char[][] grid, int x, int y, int rows, int cols) {
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(x, y));
 
@@ -64,8 +111,11 @@ public class Solution {
             }
         }
     }
+
+     */
 }
 
+/*
 class Pair {
     int x;
     int y;
@@ -74,6 +124,8 @@ class Pair {
         y = pY;
     }
 }
+
+ */
 
  /*
     public int numIslands(char[][] grid) {
