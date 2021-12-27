@@ -4,9 +4,40 @@ public class SubArrayProductLessThanK {
 
     public static void main(String[] args) {
         SubArrayProductLessThanK obj = new SubArrayProductLessThanK();
-        obj.numSubarrayProductLessThanK(new int[]{1,2,3}, 0);
+        obj.numSubarrayProductLessThanK(new int[]{10,5,2,6}, 100);
     }
 
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        if (k <= 1) {
+            // nums values are all greater than or equal to one
+            return 0;
+        }
+
+        int len = nums.length;
+
+        int product = 1;
+
+        int leftIndex = 0;
+        int rightIndex = 0;
+
+        int result = 0;
+
+        while (rightIndex < len) {
+            product *= nums[rightIndex];
+
+            while (product >= k) {
+                product /= nums[leftIndex];
+                leftIndex++;
+            }
+
+            result += rightIndex - leftIndex + 1;
+            rightIndex++;
+        }
+
+        return result;
+    }
+
+    /*
     public int numSubarrayProductLessThanK(int[] nums, int k) {
         int len = nums.length;
         if (len == 1) {
@@ -47,4 +78,6 @@ public class SubArrayProductLessThanK {
 
         return validSubArray;
     }
+
+     */
 }
