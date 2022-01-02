@@ -10,6 +10,27 @@ public class Solution {
     public int numberOfArithmeticSlices(int[] nums) {
         int len = nums.length;
 
+        int[]  dp = new int[len];
+
+        for (int i = 2; i < len; i++) {
+            if ((nums[i] - nums[i - 1]) == (nums[i - 1] - nums[i - 2])) {
+                dp[i] = dp[i - 1] + 1;
+            }
+        }
+
+        int result = 0;
+
+        for (int i = 0; i < len; i++) {
+            result += dp[i];
+        }
+
+        return result;
+    }
+
+    /*
+    public int numberOfArithmeticSlices(int[] nums) {
+        int len = nums.length;
+
         if (len < 3) {
             return 0;
         }
@@ -65,4 +86,6 @@ public class Solution {
 
         return dp[counter];
     }
+
+     */
 }
