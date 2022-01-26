@@ -15,23 +15,30 @@ public class Solution {
             String[] reservedSeats = S.split(" ");
 
             for (String s: reservedSeats) {
-                int row = s.charAt(0) - '0';
+                int row = s.charAt(0) - '1';
                 int col = s.charAt(1) - 'A';
 
-                seats[row - 1][col] = 1;
+                seats[row][col] = 1;
             }
         }
 
         int result = 0;
 
         for (int i = 0; i < N; i++) {
+            int rowCount = 0;
             if (checkForFamily(i, 1, seats)) {
-                result++;
+                rowCount++;
             }
 
             if (checkForFamily(i, 5, seats)) {
-                result++;
+                rowCount++;
             }
+
+            if (rowCount == 0 && checkForFamily(i, 3, seats)) {
+                rowCount++;
+            }
+
+            result += rowCount;
         }
 
         return result;
