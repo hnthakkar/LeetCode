@@ -1,5 +1,9 @@
 package string.findDiff389;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class Solution {
 
     public static void main(String[] str) {
@@ -7,6 +11,34 @@ public class Solution {
         sol.findTheDifference("abcd", "abcde");
     }
 
+    public char findTheDifference(String s, String t) {
+        char[] sArray = s.toCharArray();
+        char[] tArray = t.toCharArray();
+
+        Map<Character, Integer> sMap = new HashMap<>();
+
+        for (char ch: sArray) {
+            sMap.put(ch, sMap.getOrDefault(ch, 0) + 1);
+        }
+
+        for (char ch: tArray) {
+            if (!sMap.containsKey(ch)) {
+                return ch;
+            }
+
+            int count = sMap.get(ch);
+
+            if (count == 1) {
+                sMap.remove(ch);
+            } else {
+                sMap.put(ch, count - 1);
+            }
+        }
+
+        return sMap.keySet().iterator().next();
+    }
+
+    /*
     public char findTheDifference(String s, String t) {
         char[] sArray = s.toCharArray();
         int sLen = sArray.length;
@@ -31,5 +63,7 @@ public class Solution {
 
         return returnChar;
     }
+
+     */
 
 }
