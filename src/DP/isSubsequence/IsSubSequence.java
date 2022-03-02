@@ -6,9 +6,38 @@ public class IsSubSequence {
 
     public static void main(String[] args) {
         IsSubSequence obj = new IsSubSequence();
-        obj.isSubsequence("axc", "ahbgdc");
+        obj.isSubsequence("aaaaaa", "bbaaaa");
     }
 
+    public boolean isSubsequence(String s, String t) {
+        char[] sArray = s.toCharArray();
+        int sLen = sArray.length;
+
+        char[] tArray = t.toCharArray();
+        int tLen = tArray.length;
+
+        if (sLen > tLen) {
+            return false;
+        }
+
+        int tIndex = 0;
+
+        for (int sIndex = 0; sIndex < sLen; sIndex++) {
+            char cur = sArray[sIndex];
+
+            while (tIndex < tLen && tArray[tIndex] != cur) {
+                tIndex++;
+            }
+
+            if (tIndex >= tLen || tArray[tIndex++] != cur) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /*
     // If s is a subsequence of t
     public boolean isSubsequence(String s, String t) {
         char[] sArray = s.toCharArray();
@@ -59,4 +88,6 @@ public class IsSubSequence {
 
         return true;
     }
+
+     */
 }
