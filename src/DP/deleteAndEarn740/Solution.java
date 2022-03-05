@@ -10,6 +10,7 @@ public class Solution {
         sol.deleteAndEarn(new int[]{3,4,2});
     }
 
+
     public int deleteAndEarn(int[] nums) {
         int len = nums.length;
 
