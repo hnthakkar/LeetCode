@@ -19,6 +19,45 @@ public class Solution {
         int rows = grid.length;
         int cols = grid[0].length;
 
+        int result = 0;
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] == '1') {
+                    result++;
+                    helper(grid, r, c, rows, cols);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private void helper(char[][] image, int sr, int sc, int rows, int cols) {
+        if (sr < 0 || sc < 0 || sr >= rows || sc >= cols || image[sr][sc] == '0') {
+            return;
+        }
+
+        image[sr][sc] = '0';
+
+        // left
+        helper(image, sr, sc - 1, rows, cols);
+
+        // right
+        helper(image, sr, sc + 1, rows, cols);
+
+        // up
+        helper(image, sr - 1, sc, rows, cols);
+
+        // down
+        helper(image, sr + 1, sc, rows, cols);
+    }
+
+    /*
+    public int numIslands(char[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
         int noOfIslands = 0;
 
         for (int i = 0; i < rows; i++) {
@@ -60,6 +99,8 @@ public class Solution {
             markAllElemsInIsland(grid, x, y + 1, rows, cols);
         }
     }
+
+     */
 
     /*
     public int numIslands(char[][] grid) {
