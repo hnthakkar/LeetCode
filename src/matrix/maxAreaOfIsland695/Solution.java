@@ -9,6 +9,47 @@ public class Solution {
         int rows = grid.length;
         int cols = grid[0].length;
 
+        int result = 0;
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] == 1) {
+                    result = Math.max(result, helper(grid, r, c, rows, cols));
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private int helper(int[][] image, int sr, int sc, int rows, int cols) {
+        if (sr < 0 || sc < 0 || sr >= rows || sc >= cols || image[sr][sc] == 0) {
+            return 0;
+        }
+
+        int size = 1;
+        image[sr][sc] = 0;
+
+        // left
+        size += helper(image, sr, sc - 1, rows, cols);
+
+        // right
+        size += helper(image, sr, sc + 1, rows, cols);
+
+        // up
+        size += helper(image, sr - 1, sc, rows, cols);
+
+        // down
+        size += helper(image, sr + 1, sc, rows, cols);
+
+        return size;
+    }
+
+    /*
+    public int maxAreaOfIsland(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
         int max = 0;
 
         int[][] visited = new int[rows][cols];
@@ -67,5 +108,7 @@ public class Solution {
 
         return area;
     }
+
+     */
 
 }
