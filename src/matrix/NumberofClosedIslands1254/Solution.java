@@ -4,12 +4,25 @@ public class Solution {
 
     public static void main(String[] str) {
         Solution sol = new Solution();
-        sol.closedIsland(new int[][]{
+        /*sol.closedIsland(new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 0},
                 {1, 0, 0, 0, 0, 1, 1, 0},
                 {1, 0, 1, 0, 1, 1, 1, 0},
                 {1, 0, 0, 0, 0, 1, 0, 1},
                 {1, 1, 1, 1, 1, 1, 1, 0}
+        });*/
+
+        sol.closedIsland(new int[][]{
+                {0,0,1,1,0,1,0,0,1,0},
+                {1,1,0,1,1,0,1,1,1,0},
+                {1,0,1,1,1,0,0,1,1,0},
+                {0,1,1,0,0,0,0,1,0,1},
+                {0,0,0,0,0,0,1,1,1,0},
+                {0,1,0,1,0,1,0,1,1,1},
+                {1,0,1,0,1,1,0,0,0,1},
+                {1,1,1,1,1,1,0,0,0,0},
+                {1,1,1,0,0,1,0,1,0,1},
+                {1,1,1,0,1,1,0,1,1,0}
         });
     }
 
@@ -35,34 +48,28 @@ public class Solution {
             return true;
         }
 
+        boolean result = true;
+
         image[sr][sc] = 1;
 
         if ((sr == 0 || sc == 0 || sr == (rows - 1) || sc == (cols - 1))) {
-            return false;
+            result = false;
         }
 
 
         // left
-        if (!helper(image, sr, sc - 1, rows, cols)) {
-            return false;
-        }
+        result = helper(image, sr, sc - 1, rows, cols) && result;
 
         // right
-        if (!helper(image, sr, sc + 1, rows, cols)) {
-            return false;
-        }
+        result = helper(image, sr, sc + 1, rows, cols) && result;
 
         // up
-        if (!helper(image, sr - 1, sc, rows, cols)) {
-            return false;
-        }
+        result = helper(image, sr - 1, sc, rows, cols) && result;
 
         // down
-        if (!helper(image, sr + 1, sc, rows, cols)) {
-            return false;
-        }
+        result = helper(image, sr + 1, sc, rows, cols) && result;
 
-        return true;
+        return result;
     }
 
 }
