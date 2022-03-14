@@ -1,10 +1,29 @@
 package array.movezero283;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution {
 
     public static void main(String[] args) {
         Solution sol = new Solution();
         sol.moveZeroes(new int[]{4,2,4,0,0,3,0,5,1,0});
+    }
+
+    public void moveZeroes(int[] nums) {
+        int len = nums.length;
+        List<Integer> ref = new ArrayList<>();
+
+        for (int i = 0; i < len; i++) {
+            if (nums[i] != 0) {
+                ref.add(nums[i]);
+                nums[i] = 0;
+            }
+        }
+
+        for (int i = 0; i < ref.size(); i++) {
+            nums[i] = ref.get(i);
+        }
     }
 
     /*
@@ -30,6 +49,7 @@ public class Solution {
 
      */
 
+    /*
     public void moveZeroes(int[] nums) {
         int len = nums.length;
 
@@ -48,4 +68,6 @@ public class Solution {
             }
         }
     }
+
+     */
 }
