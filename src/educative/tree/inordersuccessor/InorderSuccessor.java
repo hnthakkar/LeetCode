@@ -1,6 +1,7 @@
 package educative.tree.inordersuccessor;
 
 public class InorderSuccessor {
+    /*
     static BinaryTreeNode inorderSuccessorBST(BinaryTreeNode root, int d) {
         BinaryTreeNode[] parentChildNodes = findNodeInTree(root, d);
 
@@ -83,4 +84,6 @@ public class InorderSuccessor {
 
         return parentChild;
     }
+
+     */
 }

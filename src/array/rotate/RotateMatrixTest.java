@@ -1,9 +1,9 @@
 package array.rotate;
 
-import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.Test;
 
 public class RotateMatrixTest {
-
+/*
     @Test
     public void rotateMatrix() {
         RotateMatrix rotateMatrix = new RotateMatrix();
@@ -16,5 +16,7 @@ public class RotateMatrixTest {
         rotateMatrix.rotate(testMatrix);
     }
 
+
+ */
 
 }

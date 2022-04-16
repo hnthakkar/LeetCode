@@ -1,11 +1,11 @@
 package array.searchinrotatedsortedarray;
 
-import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SearchInRotatedSortedArrayTest {
-
+/*
     @Test
     public void searchInRotatedSortedArrayTest() {
         SearchInRotatedSortedArray obj = new SearchInRotatedSortedArray();
@@ -13,4 +13,6 @@ public class SearchInRotatedSortedArrayTest {
         assertEquals(-1, index);
     }
 
+
+ */
 }

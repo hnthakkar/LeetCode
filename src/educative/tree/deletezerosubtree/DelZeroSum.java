@@ -4,6 +4,7 @@ import java.util.List;
 
 public class DelZeroSum {
 
+    /*
     public static void deleteZeroSumSubtree(BinaryTree tree) {
         System.out.println("Root Node : " + tree.root.data);
         markZeroSumSubTree(tree.root);
@@ -79,6 +80,8 @@ public class DelZeroSum {
 
         return sb.toString();
     }
+
+     */
 }
 
 class BinaryTreeNode {

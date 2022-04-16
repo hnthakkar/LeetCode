@@ -2,6 +2,7 @@ package educative.tree.perimeter;
 
 public class PrintPerimeter {
 
+    /*
     public static String displayTreePerimeter(BinaryTreeNode root) {
         List<BinaryTreeNode> nodes = new ArrayList<>();
         addLeftBoundary(root, nodes);
@@ -54,5 +55,7 @@ public class PrintPerimeter {
             nodes.add(root);
         }
     }
+
+     */
 
 }
