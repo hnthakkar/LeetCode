@@ -1,16 +1,42 @@
 package greedy.MinimumNumberofArrowstoBurstBalloons452;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 
 public class Solution {
 
     public static void main(String[] str) {
         Solution sol = new Solution();
-        sol.findMinArrowShots(new int[][]{{10, 16}, {2, 8}, {1, 6}, {7, 12}});
+        sol.findMinArrowShots(new int[][]{{-2147483646,-2147483645}, {2147483646,2147483647}});
     }
 
+    public int findMinArrowShots(int[][] points) {
+        int noOfBallons = points.length;
+
+        if (noOfBallons == 1) {
+            return 1;
+        }
+
+        Arrays.sort(points, (p1, p2) -> Integer.compare(p1[1], p2[1]));
+
+        int arrowNeeded = 1;
+        int currentBallon = 1;
+        int lastArrowPosition = points[0][1];
+
+        while (currentBallon < noOfBallons) {
+            int[] curBallon = points[currentBallon];
+
+            if (curBallon[0] > lastArrowPosition) {
+                lastArrowPosition = curBallon[1];
+                arrowNeeded++;
+            }
+
+            currentBallon++;
+        }
+
+        return arrowNeeded;
+    }
+
+    /*
     public int findMinArrowShots(int[][] points) {
         int len = points.length;
 
@@ -42,4 +68,6 @@ public class Solution {
 
         return result;
     }
+
+     */
 }
